@@ -2,17 +2,24 @@ package com.tioeun.a20191105_01_listview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.tioeun.a20191105_01_listview.adapters.RoomDataAdapter
 import com.tioeun.a20191105_01_listview.datas.RoomData
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     
     var roomList = ArrayList<RoomData>()
+    var roomAdapter:RoomDataAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         addRooms()
+
+        roomAdapter = RoomDataAdapter(this, R.layout.room_list_item, roomList)
+
+        roomListView.adapter = roomAdapter
     }
 
     //Ex. 두 숫자(인자)의 합계를 리턴(Int)해주는 함수 생성.
